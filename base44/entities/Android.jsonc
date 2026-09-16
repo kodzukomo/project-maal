@@ -1,0 +1,83 @@
+{
+  "name": "Android",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Designa\u00e7\u00e3o"
+    },
+    "model": {
+      "type": "string",
+      "title": "Modelo"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "operational",
+        "warning",
+        "critical",
+        "offline"
+      ],
+      "default": "operational",
+      "title": "Status"
+    },
+    "battery": {
+      "type": "number",
+      "title": "Bateria (%)",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "temperature": {
+      "type": "number",
+      "title": "Temperatura (\u00b0C)"
+    },
+    "cpu_load": {
+      "type": "number",
+      "title": "Carga de CPU (%)",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "hardware_integrity": {
+      "type": "number",
+      "title": "Integridade de Hardware (%)",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "latitude": {
+      "type": "number",
+      "title": "Latitude"
+    },
+    "longitude": {
+      "type": "number",
+      "title": "Longitude"
+    },
+    "location_name": {
+      "type": "string",
+      "title": "Localiza\u00e7\u00e3o"
+    },
+    "current_task": {
+      "type": "string",
+      "title": "Tarefa Atual"
+    },
+    "last_command": {
+      "type": "string",
+      "title": "\u00daltimo Comando",
+      "default": "Nenhum"
+    },
+    "last_seen": {
+      "type": "string",
+      "format": "date-time",
+      "title": "\u00daltimo Contato"
+    }
+  },
+  "required": [
+    "name",
+    "model",
+    "status",
+    "battery",
+    "temperature",
+    "latitude",
+    "longitude",
+    "location_name"
+  ]
+}

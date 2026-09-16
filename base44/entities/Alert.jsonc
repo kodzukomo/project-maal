@@ -1,0 +1,52 @@
+{
+  "name": "Alert",
+  "type": "object",
+  "properties": {
+    "android_id": {
+      "type": "string",
+      "title": "ID do Androide"
+    },
+    "android_name": {
+      "type": "string",
+      "title": "Designa\u00e7\u00e3o do Androide"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "critical"
+      ],
+      "default": "warning",
+      "title": "Severidade"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "battery",
+        "temperature",
+        "hardware",
+        "behavior",
+        "network",
+        "task"
+      ],
+      "default": "hardware",
+      "title": "Tipo"
+    },
+    "message": {
+      "type": "string",
+      "title": "Mensagem"
+    },
+    "resolved": {
+      "type": "boolean",
+      "default": false,
+      "title": "Resolvido"
+    }
+  },
+  "required": [
+    "android_id",
+    "android_name",
+    "severity",
+    "message"
+  ]
+}

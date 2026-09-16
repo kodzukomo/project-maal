@@ -1,13 +1,17 @@
-import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip } from "react-leaflet";
+import { useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./fleetMap.css";
 import { Link } from "react-router-dom";
 
+export const FACTORY_CENTER = [-23.549, -46.6388];
+
 const statusColor = {
-  operational: "#34d399",
-  warning: "#fbbf24",
-  critical: "#f87171",
-  offline: "#64748b",
+  operational: "#10B981",
+  warning: "#FBBF24",
+  critical: "#EF4444",
+  offline: "#64748B",
 };
 
 const statusLabel = {
@@ -17,44 +21,66 @@ const statusLabel = {
   offline: "Offline",
 };
 
-export default function FleetMap({ androids }) {
+function makeIcon(status) {
+  const c = statusColor[status];
+  const pulse = status !== "offline";
+  return L.divIcon({
+    className: "factory-marker",
+    html: `<div class="fm-core" style="background:${c}"></div>${pulse ? `<div class="fm-halo" style="border-color:${c}"></div>` : ""}`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+}
+
+function MapEvents({ onReady, selected, androids }) {
+  const map = useMap();
+  useEffect(() => {
+    onReady(map);
+  }, [map]);
+  useEffect(() => {
+    if (selected) {
+      const a = androids.find((x) => x.id === selected);
+      if (a) map.flyTo([a.latitude, a.longitude], 19, { duration: 0.7 });
+    }
+  }, [selected]);
+  return null;
+}
+
+export default function FleetMap({ androids, selectedId, onSelect, onMapReady }) {
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/40 overflow-hidden h-[480px]">
-      <MapContainer center={[20, 0]} zoom={2} minZoom={2} style={{ height: "100%", width: "100%", background: "#0f172a" }} scrollWheelZoom={true}>
+    <div className="h-full w-full">
+      <MapContainer
+        center={FACTORY_CENTER}
+        zoom={17}
+        zoomControl={false}
+        style={{ height: "100%", width: "100%", background: "#0B0F17" }}
+      >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; OpenStreetMap'
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+          attribution="Esri, Maxar, Earthstar Geographics"
         />
         {androids.map((a) => (
-          <CircleMarker
+          <Marker
             key={a.id}
-            center={[a.latitude, a.longitude]}
-            radius={a.status === "critical" ? 12 : 8}
-            pathOptions={{
-              color: statusColor[a.status],
-              fillColor: statusColor[a.status],
-              fillOpacity: a.status === "offline" ? 0.3 : 0.7,
-              weight: 2,
-            }}
+            position={[a.latitude, a.longitude]}
+            icon={makeIcon(a.status)}
+            eventHandlers={{ click: () => onSelect(a.id) }}
           >
-            <Tooltip>
-              <div className="text-xs">
-                <strong>{a.name}</strong> — {statusLabel[a.status]}
-              </div>
-            </Tooltip>
             <Popup>
-              <div className="text-xs space-y-1">
+              <div className="text-xs space-y-0.5">
                 <p className="font-bold text-sm">{a.name}</p>
-                <p className="text-slate-500">{a.model}</p>
+                <p className="text-slate-400">{a.model}</p>
                 <p>📍 {a.location_name}</p>
-                <p>🔋 {a.battery}% · 🌡 {a.temperature}°C</p>
-                <Link to={`/unidade/${a.id}`} className="text-cyan-600 font-semibold hover:underline">
+                <p className="font-mono">🔋 {a.battery}% · 🌡 {a.temperature}°C</p>
+                <p className="font-mono text-slate-400">{statusLabel[a.status]}</p>
+                <Link to={`/unidade/${a.id}`} className="text-emerald-400 font-semibold hover:underline">
                   Ver detalhes →
                 </Link>
               </div>
             </Popup>
-          </CircleMarker>
+          </Marker>
         ))}
+        <MapEvents onReady={onMapReady} selected={selectedId} androids={androids} />
       </MapContainer>
     </div>
   );

@@ -51,8 +51,8 @@ export default function UnitDetail() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <div className="w-8 h-8 border-4 border-slate-700 border-t-cyan-400 rounded-full animate-spin"></div>
+      <div className="flex items-center justify-center h-screen bg-background">
+        <div className="w-8 h-8 border-4 border-border border-t-primary rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -60,14 +60,13 @@ export default function UnitDetail() {
   if (!android) {
     return (
       <div className="p-8 text-center">
-        <p className="text-slate-400">Unidade não encontrada.</p>
-        <Link to="/" className="text-cyan-400 text-sm mt-2 inline-block">Voltar ao painel</Link>
+        <p className="text-muted-foreground">Unidade não encontrada.</p>
+        <Link to="/" className="text-primary text-sm mt-2 inline-block">Voltar ao painel</Link>
       </div>
     );
   }
 
   const cfg = statusConfig[android.status];
-
   const batteryStatus = android.battery < 20 ? "crit" : android.battery < 50 ? "warn" : "good";
   const tempStatus = android.temperature > 75 ? "crit" : android.temperature > 60 ? "warn" : "good";
   const cpuStatus = android.cpu_load > 85 ? "crit" : android.cpu_load > 70 ? "warn" : "good";
@@ -75,18 +74,18 @@ export default function UnitDetail() {
 
   return (
     <div className="p-6 lg:p-8 space-y-6 max-w-[1400px] mx-auto">
-      <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-300 transition-colors">
+      <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
         <ArrowLeft className="w-4 h-4" /> Voltar ao painel
       </Link>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-            <Cpu className="w-7 h-7 text-white" />
+          <div className="w-14 h-14 rounded-xl bg-primary/15 flex items-center justify-center">
+            <Cpu className="w-7 h-7 text-primary" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white">{android.name}</h1>
-            <p className="text-sm text-slate-400">{android.model} · {android.last_command}</p>
+            <h1 className="text-2xl font-display font-bold text-foreground">{android.name}</h1>
+            <p className="text-sm text-muted-foreground">{android.model} · {android.last_command}</p>
           </div>
         </div>
         <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border ${cfg.badge} ${cfg.text} self-start`}>
@@ -104,21 +103,21 @@ export default function UnitDetail() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-6">
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5">
+          <div className="rounded-xl border border-border bg-card/40 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <MapPin className="w-4 h-4 text-cyan-400" />
-              <h3 className="text-sm font-semibold text-white">Localização</h3>
+              <MapPin className="w-4 h-4 text-primary" />
+              <h3 className="text-sm font-display font-semibold text-foreground">Localização</h3>
             </div>
-            <p className="text-slate-300">{android.location_name}</p>
-            <p className="text-xs text-slate-500 mt-1 font-mono">{android.latitude.toFixed(4)}, {android.longitude.toFixed(4)}</p>
+            <p className="text-foreground">{android.location_name}</p>
+            <p className="text-xs text-muted-foreground mt-1 font-mono">{android.latitude.toFixed(4)}, {android.longitude.toFixed(4)}</p>
           </div>
 
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5">
+          <div className="rounded-xl border border-border bg-card/40 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <ClipboardList className="w-4 h-4 text-cyan-400" />
-              <h3 className="text-sm font-semibold text-white">Tarefa em Execução</h3>
+              <ClipboardList className="w-4 h-4 text-primary" />
+              <h3 className="text-sm font-display font-semibold text-foreground">Tarefa em Execução</h3>
             </div>
-            <p className="text-slate-300">{android.current_task}</p>
+            <p className="text-foreground">{android.current_task}</p>
           </div>
 
           <UnitAlerts alerts={alerts} onResolve={resolveAlert} />

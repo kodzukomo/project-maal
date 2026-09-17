@@ -29,8 +29,8 @@
 
 .radar-grid {
   background-image:
-    linear-gradient(rgba(16, 185, 129, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 185, 129, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(59, 130, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.07) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
@@ -48,9 +48,9 @@
   left: 50%;
   width: 1px;
   height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.18), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.18), transparent);
   transform: translateX(-50%);
-  box-shadow: 99vw 0 0 -99vw rgba(16, 185, 129, 0.18);
+  box-shadow: 99vw 0 0 -99vw rgba(59, 130, 246, 0.18);
 }
 
 .leaflet-container {

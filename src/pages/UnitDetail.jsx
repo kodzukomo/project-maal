@@ -7,7 +7,7 @@ import RemoteControl from "@/components/RemoteControl";
 import UnitAlerts from "@/components/UnitAlerts";
 
 const statusConfig = {
-  operational: { label: "Operacional", dot: "bg-emerald-400", text: "text-emerald-400", badge: "bg-emerald-500/10 border-emerald-500/20" },
+  operational: { label: "Operacional", dot: "bg-blue-400", text: "text-blue-400", badge: "bg-blue-500/10 border-blue-500/20" },
   warning: { label: "Atenção", dot: "bg-amber-400", text: "text-amber-400", badge: "bg-amber-500/10 border-amber-500/20" },
   critical: { label: "Crítico", dot: "bg-red-400", text: "text-red-400", badge: "bg-red-500/10 border-red-500/20" },
   offline: { label: "Offline", dot: "bg-slate-500", text: "text-slate-500", badge: "bg-slate-500/10 border-slate-500/20" },

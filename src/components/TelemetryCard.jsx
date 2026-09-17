@@ -1,6 +1,6 @@
 export default function TelemetryCard({ icon: Icon, label, value, unit, status }) {
   const colorMap = {
-    good: { text: "text-emerald-400", border: "border-emerald-500/20", bar: "bg-emerald-500" },
+    good: { text: "text-blue-400", border: "border-blue-500/20", bar: "bg-blue-500" },
     warn: { text: "text-amber-400", border: "border-amber-500/20", bar: "bg-amber-500" },
     crit: { text: "text-red-400", border: "border-red-500/20", bar: "bg-red-500" },
     neutral: { text: "text-primary", border: "border-primary/20", bar: "bg-primary" },

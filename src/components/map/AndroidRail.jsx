@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, ChevronRight, Signal } from "lucide-react";
 
 const statusConfig = {
-  operational: { label: "Operacional", text: "text-emerald-400", dot: "bg-emerald-400" },
+  operational: { label: "Operacional", text: "text-blue-400", dot: "bg-blue-400" },
   warning: { label: "Atenção", text: "text-amber-400", dot: "bg-amber-400" },
   critical: { label: "Crítico", text: "text-red-400", dot: "bg-red-400" },
   offline: { label: "Offline", text: "text-slate-500", dot: "bg-slate-500" },

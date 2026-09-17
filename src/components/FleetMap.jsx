@@ -9,15 +9,15 @@ export const FACTORY_CENTER = [-23.549, -46.6388];
 
 const statusColor = {
   operational: "#3B82F6",
-  warning: "#FBBF24",
+  warning: "#94A3B8",
   critical: "#EF4444",
   offline: "#64748B",
 };
 
 const statusLabel = {
-  operational: "Operacional",
-  warning: "Atenção",
-  critical: "Crítico",
+  operational: "Operational",
+  warning: "Warning",
+  critical: "Critical",
   offline: "Offline",
 };
 
@@ -71,10 +71,10 @@ export default function FleetMap({ androids, selectedId, onSelect, onMapReady })
                 <p className="font-bold text-sm">{a.name}</p>
                 <p className="text-slate-400">{a.model}</p>
                 <p>📍 {a.location_name}</p>
-                <p className="font-mono">🔋 {a.battery}% · 🌡 {a.temperature}°C</p>
+                <p className="font-mono">🌡 {a.temperature}°C</p>
                 <p className="font-mono text-slate-400">{statusLabel[a.status]}</p>
                 <Link to={`/unidade/${a.id}`} className="text-blue-400 font-semibold hover:underline">
-                  Ver detalhes →
+                  View details →
                 </Link>
               </div>
             </Popup>

@@ -1,10 +1,9 @@
-import { Cpu, Crosshair, BatteryCharging } from "lucide-react";
+import { Cpu, Crosshair } from "lucide-react";
 
-export default function MetricBar({ total, activeMissions, batteryAvg }) {
+export default function MetricBar({ total, activeMissions }) {
   const items = [
-    { label: "Androides", value: total, icon: Cpu },
-    { label: "Missões Ativas", value: activeMissions, icon: Crosshair },
-    { label: "Bateria Média", value: `${batteryAvg}%`, icon: BatteryCharging },
+    { label: "Units", value: total, icon: Cpu },
+    { label: "Active Missions", value: activeMissions, icon: Crosshair },
   ];
   return (
     <div className="absolute top-4 right-4 z-[1000] flex items-stretch gap-2">

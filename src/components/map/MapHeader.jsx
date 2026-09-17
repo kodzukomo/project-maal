@@ -10,7 +10,7 @@ export default function MapHeader({ factoryName }) {
         <p className="font-display font-semibold text-foreground text-sm leading-tight">{factoryName}</p>
         <div className="flex items-center gap-1.5 mt-0.5">
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-          <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider">Sinal Ativo</span>
+          <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider">Signal Active</span>
         </div>
       </div>
     </div>

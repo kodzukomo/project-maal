@@ -21,7 +21,7 @@ export default function MapControls({ map, onRecenter, showGrid, onToggleGrid })
           showGrid ? "border-primary bg-primary/10 text-primary" : "border-border bg-card/70 text-muted-foreground hover:text-foreground"
         }`}
       >
-        <Grid3x3 className="w-4 h-4" /> Grade Radar
+        <Grid3x3 className="w-4 h-4" /> Radar Grid
       </button>
     </div>
   );

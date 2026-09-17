@@ -5,7 +5,7 @@ export default function MobileTopBar({ factoryName, activeCount }) {
         <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
         <span className="font-display font-semibold text-foreground text-sm">{factoryName}</span>
       </div>
-      <span className="text-xs text-muted-foreground font-mono">{activeCount} ativas</span>
+      <span className="text-xs text-muted-foreground font-mono">{activeCount} active</span>
     </div>
   );
 }

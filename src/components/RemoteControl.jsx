@@ -2,15 +2,15 @@ import { useState } from "react";
 import { Power, Home, Stethoscope, Activity, Send } from "lucide-react";
 
 const commands = [
-  { id: "standby", label: "Modo Standby", desc: "Pausa tarefas e reduz consumo", icon: Power, tone: "amber" },
-  { id: "return_base", label: "Retornar à Base", desc: "Aciona rota automática de retorno", icon: Home, tone: "emerald" },
-  { id: "diagnostics", label: "Executar Diagnóstico", desc: "Inicia varredura completa de hardware", icon: Stethoscope, tone: "emerald" },
-  { id: "shutdown", label: "Desligamento de Emergência", desc: "Encerra operação imediatamente", icon: Activity, tone: "red" },
+  { id: "standby", label: "Standby Mode", desc: "Pauses tasks and reduces consumption", icon: Power, tone: "slate" },
+  { id: "return_base", label: "Return to Base", desc: "Triggers automatic return route", icon: Home, tone: "primary" },
+  { id: "diagnostics", label: "Run Diagnostics", desc: "Starts full hardware scan", icon: Stethoscope, tone: "primary" },
+  { id: "shutdown", label: "Emergency Shutdown", desc: "Stops operation immediately", icon: Activity, tone: "red" },
 ];
 
 const toneMap = {
-  amber: "border-amber-500/30 hover:border-amber-500/60 hover:bg-amber-500/10 text-amber-300",
-  emerald: "border-primary/30 hover:border-primary/60 hover:bg-primary/10 text-primary",
+  slate: "border-slate-500/30 hover:border-slate-500/60 hover:bg-slate-500/10 text-slate-300",
+  primary: "border-primary/30 hover:border-primary/60 hover:bg-primary/10 text-primary",
   red: "border-red-500/30 hover:border-red-500/60 hover:bg-red-500/10 text-red-300",
 };
 
@@ -35,8 +35,8 @@ export default function RemoteControl({ android, onSendCommand }) {
           <Send className="w-4 h-4 text-primary" />
         </div>
         <div>
-          <h3 className="text-sm font-display font-semibold text-foreground">Controle Remoto</h3>
-          <p className="text-xs text-muted-foreground">Envie comandos de intervenção para {android.name}</p>
+          <h3 className="text-sm font-display font-semibold text-foreground">Remote Control</h3>
+          <p className="text-xs text-muted-foreground">Send intervention commands to {android.name}</p>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -54,7 +54,7 @@ export default function RemoteControl({ android, onSendCommand }) {
               <div>
                 <p className="text-sm font-medium">{cmd.label}</p>
                 <p className="text-xs text-muted-foreground mt-0.5">{cmd.desc}</p>
-                {isLoading && <p className="text-xs text-primary mt-1 animate-pulse">Enviando...</p>}
+                {isLoading && <p className="text-xs text-primary mt-1 animate-pulse">Sending...</p>}
               </div>
             </button>
           );
@@ -62,7 +62,7 @@ export default function RemoteControl({ android, onSendCommand }) {
       </div>
       {log.length > 0 && (
         <div className="mt-4 pt-4 border-t border-border">
-          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-mono">Log de Comandos</p>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-mono">Command Log</p>
           <div className="space-y-1.5">
             {log.map((entry, i) => (
               <div key={i} className="flex items-center justify-between text-xs">

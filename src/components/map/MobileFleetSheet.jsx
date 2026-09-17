@@ -12,7 +12,7 @@ export default function MobileFleetSheet({ androids, onFocus }) {
         <button onClick={() => setOpen((o) => !o)} className="w-full flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            <span className="font-display font-semibold text-foreground text-sm">{active.length} unidades ativas</span>
+            <span className="font-display font-semibold text-foreground text-sm">{active.length} active units</span>
           </div>
           <ChevronUp className={`w-5 h-5 text-muted-foreground transition-transform ${open ? "" : "rotate-180"}`} />
         </button>
@@ -22,7 +22,6 @@ export default function MobileFleetSheet({ androids, onFocus }) {
               <div key={a.id} className="rounded-lg border border-border bg-background/50 p-3">
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-foreground text-sm">{a.name}</span>
-                  <span className="text-[10px] text-muted-foreground font-mono">{a.battery}%</span>
                 </div>
                 <p className="text-[10px] text-muted-foreground mt-0.5">{a.location_name}</p>
                 <div className="flex items-center gap-3 mt-2">
@@ -33,10 +32,10 @@ export default function MobileFleetSheet({ androids, onFocus }) {
                     }}
                     className="flex items-center gap-1.5 text-xs text-primary font-medium"
                   >
-                    <MapPin className="w-3.5 h-3.5" /> Localizar
+                    <MapPin className="w-3.5 h-3.5" /> Locate
                   </button>
                   <Link to={`/unidade/${a.id}`} className="flex items-center gap-1.5 text-xs text-muted-foreground ml-auto">
-                    Detalhes <ArrowUpRight className="w-3.5 h-3.5" />
+                    Details <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>

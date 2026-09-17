@@ -13,7 +13,7 @@ export default function Layout() {
             <Cpu className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <p className="text-sm font-display font-bold tracking-wider text-foreground">NEXUS AI</p>
+            <p className="text-sm font-display font-bold tracking-wider text-foreground">Project M.A.A.L</p>
             <p className="text-[10px] text-primary/70 tracking-widest uppercase font-mono">Fleet Control</p>
           </div>
         </div>
@@ -25,13 +25,13 @@ export default function Layout() {
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
-            Painel
+            Dashboard
           </Link>
         </nav>
         <div className="px-4 py-4 border-t border-border">
           <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            Sistema operacional
+            System operational
           </div>
         </div>
       </aside>

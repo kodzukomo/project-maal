@@ -47,7 +47,6 @@ export default function Home() {
   const activeMissions = androids.filter(
     (a) => a.status !== "offline" && a.current_task && a.current_task !== "Inativo"
   ).length;
-  const batteryAvg = active.length ? Math.round(active.reduce((s, a) => s + a.battery, 0) / active.length) : 0;
   const criticalAlerts = alerts.filter((a) => a.severity === "critical");
 
   const handleFocus = (a) => setSelectedId(a.id);
@@ -77,13 +76,13 @@ export default function Home() {
 
       {isMobile ? (
         <>
-          <MobileTopBar factoryName="NEXUS Prime" activeCount={active.length} />
+          <MobileTopBar factoryName="M.A.A.L Prime" activeCount={active.length} />
           <MobileFleetSheet androids={androids} onFocus={handleFocus} />
         </>
       ) : (
         <>
-          <MapHeader factoryName="NEXUS Prime — Complexo Industrial" />
-          <MetricBar total={androids.length} activeMissions={activeMissions} batteryAvg={batteryAvg} />
+          <MapHeader factoryName="M.A.A.L Prime — Industrial Complex" />
+          <MetricBar total={androids.length} activeMissions={activeMissions} />
           <AndroidRail androids={androids} selectedId={selectedId} onFocus={handleFocus} />
           <MapControls
             map={map}

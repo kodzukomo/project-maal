@@ -15,7 +15,7 @@ const getAppParams = () => {
 		clearStoredAccessToken();
 	}
 	return {
-		appId: appId: "6aac74a7cd648a1c0eb4d649",
+		appId: "6aac74a7cd648a1c0eb4d649",
 		token: getAccessToken(),
 		functionsVersion: import.meta.env.VITE_BASE44_FUNCTIONS_VERSION,
 		appBaseUrl: import.meta.env.VITE_BASE44_APP_BASE_URL,
